@@ -1,0 +1,164 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.invoice {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+    margin: 40px 0px;
+    background-color: white;
+    max-width: 1000px;
+    width: 80vw;
+}
+
+.banner {
+    /* border: 2px solid red; */
+    height: auto;
+    /* border-radius: 5px; */
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(195, 80%, 60%);
+    color: white;
+    padding: 20px 40px;
+}
+
+.bannerAndItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 40px;
+}
+
+.subBanner {
+    /* border: 1px solid lightgray; */
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.items {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+}
+
+.strip {
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid lightskyblue;
+    height: 80px;
+}
+
+/* .stripDesc {
+    position: relative;
+    left: 0
+}
+.stripQty {
+    position: absolute;
+    left: 500px;
+}
+.stripUnit {
+    position: relative;
+    left: 600px;
+}
+.stripTotal {
+    border: 2px solid red;
+    position: relative;
+    left: 700px;
+} */
+
+.lightHeaders {
+    color: hsl(195, 80%, 60%);
+}
+
+.thinFont {
+    font-size: 18px;
+}
+.boldFont {
+    font-weight: bold;
+}
+.largeFont {
+    font-size: 40px;
+}
+
+.xlargeFont {
+    font-size: 70px;
+    /* border: 2px solid blue; */
+}
+
+.invWord {
+    position: relative;
+    top: -75px;
+}
+
+.centerDiv {
+    /* border: 2px solid red; */
+    height: 150px;
+}
+
+.invTotal {
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.invLabel {
+    /* border: 2px solid red; */
+}
+
+.invNum {
+    /* border: 2px solid blue; */
+    position: relative;
+    top: -55px;
+}
+
+.border {
+    /* border: 2px solid red; */
+    font-size: 22px;
+}
+
+.bottom {
+    border: 2px solid red;
+    margin-bottom: 0px;
+}
+
+.billedTo {
+    /* border: 2px solid red; */
+}
+
+.itemHeadings {
+    border-bottom: none;
+    margin-top: 10px;
+}
+
+.balances {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.balHeaders {
+    /* border: 2px solid red; */
+    margin-right: 30px;
+
+}
+
+.balHeaders p {
+    text-align: right;
+}
+
+.balAmts {
+    text-align: right;
+}
+
+
+

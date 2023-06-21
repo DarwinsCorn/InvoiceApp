@@ -1,0 +1,70 @@
+.cardInvoices {
+    /* border: 1px solid lightgray; */
+    /* background-color: hsl(0, 0%, 95%); */
+    border-radius: 5px;
+    /* box-shadow: 3px 3px 5px lightgray; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 80vw;
+    margin: 20px 20px;
+}
+
+.block {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+}
+.cardMenu {
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    width: 80vw;
+    margin: 20px 20px;
+}
+
+.strip {
+    border: 1px solid lightgray;
+    box-shadow: 3px 3px 5px lightgray;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+    transition: scale 0.5s;
+}
+.strip:hover {
+    scale: 0.98;
+}
+
+
+.invcolor {
+    color: hsl(203, 92%, 50%);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.shrink{
+    transition: 0.2s;
+}
+.shrink:active {
+    scale: 0.9,
+}
+.shrink:not(:active) {
+    scale: 1;
+}
