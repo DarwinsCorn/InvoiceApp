@@ -78,14 +78,14 @@ export default function InvoiceDetail() {
                     </section>
                     <section className={`${classes.items} `}>
                         <div className={`${classes.strip} ${classes.itemHeadings}`}>
-                            <div><h3 className={classes.lightHeaders}>Description</h3></div>
-                            <div>
+                            <div ><h3 className={classes.lightHeaders}>Description</h3></div>
+                            <div className={classes.stripQty}>
                                 <h3 className={classes.lightHeaders}>Qty</h3>
                             </div>
-                            <div>
+                            <div className={classes.stripUnit}>
                                 <h3 className={classes.lightHeaders}>Price/Unit</h3>
                             </div>
-                            <div>
+                            <div className={classes.stripTotal}>
                                 <h3 className={classes.lightHeaders}>Amount</h3>
                             </div>
                         </div>
