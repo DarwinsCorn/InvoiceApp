@@ -30,11 +30,11 @@ export default function Invoices() {
             <div className={classes.strip}>
                 <div>
                     <h2 className={classes.invcolor}>Invoice #{inv.id}</h2>
-                    <h2 className={classes.normalFont}>{date.format(new Date(inv.date))}</h2>
+                    <h2 className={classes.normalFont18}>{date.format(new Date(inv.date))}</h2>
                 </div>
                 <div>
                     <h2>{findVend(inv.vendorId).name}</h2>
-                    <h2 className={classes.normalFont}>{findVend(inv.vendorId).email}</h2>
+                    <h2 className={classes.normalFont18}>{findVend(inv.vendorId).email}</h2>
                 </div>
                 <div className={classes.rightAlign}>
                     <h2>{currency.format(inv.amt)}</h2>
@@ -47,14 +47,18 @@ export default function Invoices() {
         <div className={classes.center}>
             <div className={classes.blockMenu}>
                 <div className={classes.cardMenu}>
-                    <h1>Vendors</h1>
-                    <h1>{numVend()}</h1>
+                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuHeaders}`}>Vendors</p>
+                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuHeaders}`}>{numVend()}</p>
                 </div>
                 <div className={classes.cardMenu}>
-                    <h1>Invoices</h1>
-                    <h1>{invData.length}</h1>
-                    <h1>{currency.format(allTotalInv())}</h1>
+                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuHeaders}`}>Invoices</p>
+                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems}`}>{invData.length}</p>
+                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems}`}>{currency.format(allTotalInv())}</p>
                 </div>
+            </div>
+            <div className={classes.searchCenter}>
+               <input onChange={searchHandle} className={classes.search} type="search" name="searchBar" id="searchBar" placeholder="Search"/>
+               <button className={classes.searchButton}>Search</button>
             </div>
             <div className={classes.cardInvoices}>
                 {invoices}

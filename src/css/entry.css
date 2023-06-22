@@ -9,7 +9,7 @@
 
 .card {
     border: 1px solid lightgray;
-    background-color: white;
+    background-color: hsl(39, 80%, 60%);
     border-radius: 5px;
     box-shadow: 3px 3px 5px lightgray;
     display: flex;
