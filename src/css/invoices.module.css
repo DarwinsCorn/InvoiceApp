@@ -1,56 +1,10 @@
-.cardInvoices {
-    /* border: 1px solid lightgray; */
-    /* background-color: hsl(0, 0%, 95%); */
-    border-radius: 5px;
-    /* box-shadow: 3px 3px 5px lightgray; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 80vw;
-    margin: 20px 20px;
-    gap: 5px;
-}
 
-.block {
+.blockMenu {
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80vw;
-}
-.cardMenu {
-    border: 1px solid lightgray;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 3px 3px 5px lightgray;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: auto;
-    width: 80vw;
-    margin: 20px 20px;
-}
-
-.strip {
-    border: 1px solid lightgray;
-    box-shadow: 3px 3px 5px lightgray;
-    border-radius: 5px;
-    background-color: white;
-    display: flex;
-    justify-content: space-around;
-    width: 80vw;
-    transition: scale 0.5s;
-}
-.strip:hover {
-    scale: 0.98;
-}
-
-
-.invcolor {
-    color: hsl(203, 92%, 50%);
 }
 
 .center {
@@ -60,12 +14,55 @@
     flex-direction: column;
 }
 
-.shrink{
-    transition: 0.2s;
+.cardMenu {
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    width: 80vw;
+    margin: 20px 20px;
 }
-.shrink:active {
-    scale: 0.9,
+
+.cardInvoices {
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 80vw;
+    margin: 20px 20px;
+    gap: 5px;
 }
-.shrink:not(:active) {
-    scale: 1;
+
+.strip {
+    border: 1px solid lightgray;
+    box-shadow: 3px 3px 5px lightgray;
+    border-radius: 5px;
+    background-color: white;
+    padding: 5px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+    transition: scale 0.5s;
+}
+
+.strip:hover {
+    scale: 0.98;
+}
+
+.invcolor {
+    color: hsl(203, 92%, 50%);
+}
+
+.normalFont {
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.rightAlign {
+    /* border: 2px solid red; */
+    text-align: right;
 }
