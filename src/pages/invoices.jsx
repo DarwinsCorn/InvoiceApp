@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import classes from '../css/invoices.module.css';
 import {data as invData} from '../data/invoiceData';
 import {data as vendData} from '../data/vendorData';
 
 export default function Invoices() {
+
+    const [search, setSearch] = useState("");
 
     const date = new Intl.DateTimeFormat('en-us',{ dateStyle: "long"});
     const currency = new Intl.NumberFormat('en-us',{ style:'currency',currency:'USD'})
@@ -22,6 +24,11 @@ export default function Invoices() {
     function allTotalInv() {
         const amts = invData.map(inv => inv.amt);
         return amts.reduce((acc,cur) => acc + cur)
+    }
+
+    function searchHandle(evt) {
+        setSearch(evt.target.value);
+        console.log(search)
     }
     
     
