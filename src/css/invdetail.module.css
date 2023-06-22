@@ -21,7 +21,7 @@
     /* border-radius: 5px; */
     display: flex;
     justify-content: space-between;
-    background-color: hsl(195, 80%, 60%);
+    background-color: hsl(203, 92%, 50%);
     color: white;
     padding: 20px 40px;
 }
@@ -77,22 +77,21 @@
 }
 
 .lightHeaders {
-    color: hsl(195, 80%, 60%);
+    color: hsl(203, 92%, 50%);
 }
 
-.thinFont {
+.thinFont18 {
     font-size: 18px;
 }
 .boldFont {
     font-weight: bold;
 }
-.largeFont {
+.largeFont40 {
     font-size: 40px;
 }
 
-.xlargeFont {
+.xlargeFont70 {
     font-size: 70px;
-    /* border: 2px solid blue; */
 }
 
 .invWord {
@@ -101,29 +100,21 @@
 }
 
 .centerDiv {
-    /* border: 2px solid red; */
     height: 150px;
 }
 
 .invTotal {
-    /* border: 2px solid green; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.invLabel {
-    /* border: 2px solid red; */
-}
-
 .invNum {
-    /* border: 2px solid blue; */
     position: relative;
     top: -55px;
 }
 
-.border {
-    /* border: 2px solid red; */
+.font22 {
     font-size: 22px;
 }
 
@@ -132,36 +123,22 @@
     margin-bottom: 0px;
 }
 
-.billedTo {
-    /* border: 2px solid red; */
-}
-
 .itemHeadings {
     border-bottom: none;
     margin-top: 10px;
 }
 
 .balances {
-    display: flex;
-    justify-content: flex-end;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
     margin-bottom: 40px;
     margin-top: 20px;
-}
-
-.balHeaders {
-    /* border: 2px solid red; */
-    margin-right: 30px;
-
-}
-
-.balHeaders p {
     text-align: right;
 }
 
-.balAmts {
-    text-align: right;
+.hide {
+    opacity: 0;
 }
-
 
 
 

@@ -37,43 +37,43 @@ export default function InvoiceDetail() {
             <div className={classes.invoice}>                
                 <section className={classes.banner}>
                     <div className={classes.centerDiv}>
-                        <p className={`${classes.border}`}>{vendDetails.name}</p>
-                        <p className={`${classes.xlargeFont} ${classes.boldFont} ${classes.invWord}`}>INVOICE</p>
+                        <p className={`${classes.font22}`}>{vendDetails.name}</p>
+                        <p className={`${classes.xlargeFont70} ${classes.boldFont} ${classes.invWord}`}>INVOICE</p>
 
                     </div>
                     <div>
-                        <p className={classes.thinFont}>{vendDetails.phone}</p>
-                        <p className={classes.thinFont}>{vendDetails.email}</p>
+                        <p className={classes.thinFont18}>{vendDetails.phone}</p>
+                        <p className={classes.thinFont18}>{vendDetails.email}</p>
                     </div>
                     <div>
-                        <p className={classes.thinFont}>{vendDetails.address.street}</p>
-                        <p className={classes.thinFont}>{vendDetails.address.city}, {vendDetails.address.state}</p>
-                        <p className={classes.thinFont}>{vendDetails.address.zip}</p>
+                        <p className={classes.thinFont18}>{vendDetails.address.street}</p>
+                        <p className={classes.thinFont18}>{vendDetails.address.city}, {vendDetails.address.state}</p>
+                        <p className={classes.thinFont18}>{vendDetails.address.zip}</p>
                     </div>
                 </section>
                 <section className={classes.bannerAndItems}>
                     <section className={classes.subBanner}>
-                        <div className={classes.billedTo}>
+                        <div >
                             <div>
-                                <p className={`${classes.lightHeaders} ${classes.thinFont} ${classes.boldFont}`}>Billed to</p>
+                                <p className={`${classes.lightHeaders} ${classes.thinFont18} ${classes.boldFont}`}>Billed to</p>
                             </div>
                             <div>
-                                <p className={classes.thinFont}>Customer info</p>
+                                <p className={classes.thinFont18}>Customer info</p>
                             </div>
                         </div>
                         <div>
                             <div>
-                                <h1 className={`${classes.lightHeaders} ${classes.thinFont} ${classes.boldFont}`}>Invoice number</h1>
-                                <p className={`${classes.thinFont}`}>{invDetails.id}</p>
+                                <h1 className={`${classes.lightHeaders} ${classes.thinFont18} ${classes.boldFont}`}>Invoice number</h1>
+                                <p className={`${classes.thinFont18}`}>{invDetails.id}</p>
                             </div>
                             <div>
-                                <p className={`${classes.lightHeaders} ${classes.thinFont} ${classes.boldFont}`}>Date of Issue</p>
-                                <p className={`${classes.thinFont}`}>{invDetails.date}</p>
+                                <p className={`${classes.lightHeaders} ${classes.thinFont18} ${classes.boldFont}`}>Date of Issue</p>
+                                <p className={`${classes.thinFont18}`}>{invDetails.date}</p>
                             </div>
                         </div>
                         <div className={classes.invTotal}>
-                            <p className={`${classes.thinFont} ${classes.invLabel} ${classes.boldFont}`}>Invoice Total</p>
-                            <p className={`${classes.lightHeaders} ${classes.largeFont} ${classes.boldFont} ${classes.invNum}`}>{currency.format(total)}</p>
+                            <p className={`${classes.thinFont18} ${classes.boldFont}`}>Invoice Total</p>
+                            <p className={`${classes.lightHeaders} ${classes.largeFont40} ${classes.boldFont} ${classes.invNum}`}>{currency.format(total)}</p>
                         </div>
                     </section>
                     <section className={`${classes.items} `}>
@@ -92,16 +92,16 @@ export default function InvoiceDetail() {
                         {items}
                     </section>
                     <section className={`${classes.balances}`}>
-                        <div className={`${classes.balHeaders}`}>
+                        <div >
                             <p className={classes.lightHeaders}>Subtotal</p>
                             <p className={classes.lightHeaders}>Tax (13%)</p>
-                            <p className={classes.lightHeaders}>Total</p>
+                            <p className={`${classes.lightHeaders} ${classes.hide}`}>Total</p>
                             <p className={classes.lightHeaders}>Amount Due (USD)</p>
                         </div>
-                        <div className={`${classes.balAmts}`}>
+                        <div >
                             <p>{currency.format(subtotal)}</p>
                             <p>{currency.format(taxed)}</p>
-                            <p>{currency.format(total)}</p>
+                            <p className={classes.hide}>{currency.format(total)}</p>
                             <p>{currency.format(total)}</p>
                         </div>
                     </section>
