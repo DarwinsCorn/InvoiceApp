@@ -17,7 +17,7 @@
 
 .banner {
     /* border: 2px solid red; */
-    height: auto;
+    height: 175px;
     /* border-radius: 5px; */
     display: flex;
     justify-content: space-between;
@@ -97,10 +97,6 @@
 .invWord {
     position: relative;
     top: -75px;
-}
-
-.centerDiv {
-    height: 150px;
 }
 
 .invTotal {
