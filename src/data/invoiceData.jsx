@@ -27,7 +27,7 @@ export const data = [
         amt: 7285.00,
         date: "07/01/2023",
         vendorId: 1,
-        items: [
+        items: [    
             {
                 qty: 10,
                 priceUnit: 13.50,
