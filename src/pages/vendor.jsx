@@ -12,7 +12,7 @@ export default function Vendors() {
                     <h2 >{vendor.name}</h2>
                 </div>
                 <div>
-                    <h2>{vendor.email}</h2>
+                    <h2 className={classes.normalFont18}>{vendor.email}</h2>
                 </div>
                 <div>
                     <h2>{vendor.address.city}, {vendor.address.state}</h2>

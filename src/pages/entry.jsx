@@ -6,16 +6,16 @@ export default function Entry() {
 
     return(
         <div className="container ">
-            <div className="card">
-                <Link to={"/vendors"}>
-                    <h1 >VENDORS</h1>
-                </Link>                
-            </div>
-            <div className="card">               
-                <Link to={"/invoices"}>                
-                    <h1 >INVOICES</h1>   
-                </Link>
-            </div>
+            <Link to={"/vendors"}>
+                <div className="card">
+                        <h1 >VENDORS</h1>
+                </div>
+            </Link>                
+            <Link to={"/invoices"}>                
+                <div className="card">               
+                        <h1 >INVOICES</h1>   
+                </div>
+            </Link>
         </div>
     )
 }

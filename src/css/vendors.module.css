@@ -1,8 +1,5 @@
 .cardVendors {
-    /* border: 1px solid lightgray; */
-    /* background-color: hsl(0, 0%, 95%); */
     border-radius: 5px;
-    /* box-shadow: 3px 3px 5px lightgray; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,4 +32,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.normalFont18 {
+    font-weight: 300;
+    font-size: 18px;
 }
