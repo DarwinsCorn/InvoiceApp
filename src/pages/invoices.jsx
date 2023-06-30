@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams} from "react-router-dom";
 import classes from '../css/invoices.module.css';
 import {data as invData} from '../data/invoiceData';
 import {data as vendData} from '../data/vendorData';
+import Search from "../components/search";
 
 export default function Invoices() {
 
     const [search, setSearch] = useState("");
     const [result, setResult] = useState([]);
-   
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const date = new Intl.DateTimeFormat('en-us',{ dateStyle: "long"});
     const currency = new Intl.NumberFormat('en-us',{ style:'currency',currency:'USD'})
 
@@ -32,9 +34,18 @@ export default function Invoices() {
     }
 
     useEffect(() => {
-        if(search !== "") setResult(invData.filter(inv => inv.id == search || findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase())));
+        if(search !== "") {
+            setSearchParams({})
+            setResult(invData.filter(inv => inv.id == search ||               
+                findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase())
+            ));
+        }
+        else if(searchParams.get("vendor")) {
+            setResult(invData.filter(inv =>
+            searchParams.get("vendor").toLowerCase() == findVend(inv.vendorId).name.toLowerCase()))
+        }
         else setResult(invData)
-    },[search]);
+    },[search, searchParams]);
     
     
     const invoices = result.map(inv => (
@@ -69,10 +80,7 @@ export default function Invoices() {
                     <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems}`}>{currency.format(allTotalInv())}</p>
                 </div>
             </div>
-            <div className={classes.searchCenter}>
-               <input onChange={searchHandle} className={classes.search} type="search" name="searchBar" id="searchBar" placeholder="Enter an invoice number, or vendor name..."/>
-               <button className={classes.searchButton}>Search</button>
-            </div>
+            <Search handler={searchHandle} placeholder={"Enter an invoice number, or vendor name..."}/>            
             <div className={classes.cardInvoices}>
                 {invoices}
             </div>
