@@ -1,11 +1,18 @@
+.center {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .cardVendors {
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: auto;
     width: 80vw;
+    max-width: 1000px;
     margin: 20px 20px;
     gap: 5px;
 }
@@ -15,11 +22,13 @@
     box-shadow: 3px 3px 5px lightgray;
     border-radius: 5px;
     background-color: white;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    padding: 5px 20px;
     justify-content: space-around;
     width: 80vw;
-    transition: 0.5s;
+    max-width: 1000px;
+    transition: scale 0.5s;
 }
 
 .strip:hover {
@@ -27,14 +36,41 @@
     color: hsl(197, 85%, 40%)
 }
 
-.center {    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.stripVendorFields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .normalFont18 {
     font-weight: 300;
     font-size: 18px;
 }
+
+input[type=button] {
+   color: white;    
+   background-color: orange;
+   cursor: pointer;
+   margin: 20px;
+}
+
+input[type=button][id=add] {
+    font-size: 35px;
+    border-radius: 40px;
+    height: 50px;
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+input[type=button],[id=del],[id=inv] {
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    margin-left: 20px;
+}
+
+.addDelDiv {
+    display: flex;
+    flex-direction: column;
+}
+
