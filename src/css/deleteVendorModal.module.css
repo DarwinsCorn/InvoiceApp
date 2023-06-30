@@ -1,0 +1,23 @@
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: hsl(223, 26%, 40%);
+    color: white;
+    padding: 20px;
+    box-shadow: 5px 5px 8px gray;
+    border-radius: 5px;
+}
+
+.inputBtn {
+    font-size: 15px;
+    border-radius: 5px;
+    height: 40px;
+    width: 80%;
+    color: white;    
+    background-color: orange;
+    cursor: pointer;
+    margin-bottom: 10px;
+}

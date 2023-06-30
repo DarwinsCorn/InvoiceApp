@@ -1,5 +1,6 @@
 import React from "react";
-import classes from '../css/addVendor.module.css';
+// import classes from '../css/addVendor.module.css';
+import classes from '../css/addVendorForm.module.css';
 
 export default function AddVendorForm({set,add}) {
 
@@ -13,26 +14,18 @@ export default function AddVendorForm({set,add}) {
 
     return(
         <div className={classes.container}>
-            <h1>Enter vendor information</h1>
             <form onSubmit={formHandler}>
-                <label>
-                    Vendor Name:
-                    <input type="text" name="name" id="name" /><br />
-                </label>
-                Address:
-                   <label htmlFor="street">Street:</label> <input type="text" name="street" id="street" /><br />
-                    <label htmlFor="city">City:</label><input type="text" name="city" id="city" /><br />
-                    <label htmlFor="state">State:</label><input type="text" name="state" id="state" /><br />
-                    <label htmlFor="zip">Zip:</label><input type="text" name="zip" id="zip" /><br />
-                
-                <label>Email:
-                    <input type="email" name="email" id="email" /><br />
-                </label>
-                <label>Phone:
-                    <input type="number" name="phone" id="phone" /><br />
-                </label>
-                <button>ADD VENDOR</button>
-                <button onClick={set}>Cancel</button>
+                <div className={classes.center}>
+                    <input required className={classes.inputForm} placeholder="Vendor Name" type="text" name="name" id="name" />
+                    <input required className={classes.inputForm} placeholder="City" type="text" name="city" id="city" />
+                    <input required className={classes.inputForm} placeholder="Street" type="text" name="street" id="street" />
+                    <input required className={classes.inputForm} placeholder="State" type="text" name="state" id="state" />
+                    <input required className={classes.inputForm} placeholder="Zip Code" type="text" name="zip" id="zip" />
+                    <input required className={classes.inputForm} placeholder="Email" type="email" name="email" id="email" />
+                    <input className={classes.inputForm} placeholder="Phone" type="tel" name="phone" id="phone"/>
+                    
+                    <button className={classes.submitBtn}>ADD VENDOR</button>
+                </div>
             </form>
         </div>
     )

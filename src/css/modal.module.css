@@ -18,8 +18,8 @@
     text-align: center;
     border-radius: 5px;
     border: 1px solid lightgray;
-    box-shadow: 3px 3px 5px lightgray;
-    background-color: hsl(0, 0%, 98%);
+    box-shadow: 5px 5px 10px gray;
+    background-color: hsl(0, 0%, 96%);
     display: flex;
     flex-direction: column;
 }
@@ -27,6 +27,7 @@
 .alignButton {
     display: flex;
     justify-content: flex-end;
+    height: 40px;
 }
 
 .closeButton {
