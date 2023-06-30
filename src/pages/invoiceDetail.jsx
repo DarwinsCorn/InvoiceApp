@@ -17,8 +17,8 @@ export default function InvoiceDetail() {
     const taxed = subtotal * 0.13;
     const total = subtotal + taxed;
 
-    const items = invDetails.items.map(item => (
-        <div className={classes.strip}>
+    const items = invDetails.items.map((item,ix) => (
+        <div key={ix} className={classes.strip}>
             <div className={classes.stripDesc}>{item.descrp}</div>
             <div className={classes.stripQty}>                
                 {item.qty}
