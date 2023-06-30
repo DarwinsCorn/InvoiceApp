@@ -1,0 +1,49 @@
+.background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.modal {
+    z-index: 5;
+    height: 500px;
+    width: 500px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    box-shadow: 3px 3px 5px lightgray;
+    background-color: hsl(0, 0%, 98%);
+    display: flex;
+    flex-direction: column;
+}
+
+.alignButton {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.closeButton {
+    border-radius: 20px;
+    border: 3px solid hsl(0, 0%, 40%);
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    color: white;
+    margin: 20px;
+    position: relative;
+    justify-self: end;
+    cursor: pointer;
+    background-color: orange;
+}
+
+.content {
+    height: 100%;
+    padding: 20px;
+}
