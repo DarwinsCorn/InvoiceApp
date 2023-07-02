@@ -62,12 +62,13 @@ input[type=button][id=add] {
     margin-bottom: 20px;
 }
 
-input[type=button],[id=del],[id=inv] {
+input[type=button] {
     font-size: 15px;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
     margin-left: 20px;
+    width: 70px;
 }
 
 .addDelDiv {

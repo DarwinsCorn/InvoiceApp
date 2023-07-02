@@ -58,7 +58,7 @@
     background-color: white;
     padding: 5px 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 10fr 2fr;
     width: 80vw;
     max-width: 1000px;
     transition: scale 0.5s;
@@ -66,6 +66,12 @@
 
 .strip:hover {
     scale: 0.98;
+}
+
+.stripInvoiceFields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* border: 2px solid red; */
 }
 
 .invcolor {
@@ -88,5 +94,17 @@
 .rightAlign {
     /* border: 2px solid red; */
     text-align: right;
+}
+
+/* .deleteBtn {
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 5px;
+    margin-left: 20px;
+} */
+
+.align {
+    align-items:last baseline;
 }
 

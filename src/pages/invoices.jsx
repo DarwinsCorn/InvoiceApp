@@ -51,16 +51,21 @@ export default function Invoices() {
     const invoices = result.map(inv => (
         <Link key={inv.id} to={`${inv.id}`}>
             <div className={classes.strip}>
-                <div>
-                    <h2 className={classes.invcolor}>Invoice #{inv.id}</h2>
-                    <h2 className={classes.normalFont18}>{date.format(new Date(inv.date))}</h2>
+                <div className={classes.stripInvoiceFields}>
+                    <div>
+                        <h2 className={classes.invcolor}>Invoice #{inv.id}</h2>
+                        <h2 className={classes.normalFont18}>{date.format(new Date(inv.date))}</h2>
+                    </div>
+                    <div>
+                        <h2>{findVend(inv.vendorId).name}</h2>
+                        <h2 className={classes.normalFont18}>{findVend(inv.vendorId).email}</h2>
+                    </div>
+                    <div className={classes.rightAlign}>
+                        <h2>{currency.format(inv.amt)}</h2>
+                    </div>
                 </div>
-                <div>
-                    <h2>{findVend(inv.vendorId).name}</h2>
-                    <h2 className={classes.normalFont18}>{findVend(inv.vendorId).email}</h2>
-                </div>
-                <div className={classes.rightAlign}>
-                    <h2>{currency.format(inv.amt)}</h2>
+                <div className={`${classes.center} ${classes.align}`}>
+                    <input type="button" value="Delete" />
                 </div>
             </div>
         </Link>
