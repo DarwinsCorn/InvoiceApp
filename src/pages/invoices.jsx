@@ -30,6 +30,7 @@ export default function Invoices() {
     }
 
     function searchHandle(evt) {
+        setSearchParams({})
         setSearch(evt.target.value);
     }
 
@@ -39,6 +40,14 @@ export default function Invoices() {
             setResult(invData.filter(inv => inv.id == search ||               
                 findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase())
             ));
+    function invoiceDeletion(id) {
+        const index = invData.findIndex(inv => inv.id === id);
+        if (index !== -1) {
+            setInvData(prev => {
+                const dbInv = prev.slice(0);
+                dbInv.splice(index,1);
+                return dbInv;
+            })
         }
         else if(searchParams.get("vendor")) {
             setResult(invData.filter(inv =>
@@ -47,9 +56,11 @@ export default function Invoices() {
         else setResult(invData)
     },[search, searchParams]);
     
+    }
     
     const invoices = result.map(inv => (
         <Link key={inv.id} to={`${inv.id}`}>
+        <Link key={inv.id} to={`${inv.id}`} >
             <div className={classes.strip}>
                 <div className={classes.stripInvoiceFields}>
                     <div>
@@ -65,7 +76,7 @@ export default function Invoices() {
                     </div>
                 </div>
                 <div className={`${classes.center} ${classes.align}`}>
-                    <input type="button" value="Delete" />
+                    <input onClick={(e) => {e.preventDefault();invoiceDeletion(inv.id);}} type="button" value="Delete" />
                 </div>
             </div>
         </Link>
