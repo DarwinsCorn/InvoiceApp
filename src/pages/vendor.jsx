@@ -6,13 +6,16 @@ import classes from '../css/vendors.module.css';
 import Search from "../components/search";
 import AddVendorModal from "../components/addVendorModal";
 import DeleteVendorModal from "../components/deleteVendorModal";
+import VendorDetailsModal from "../components/vendorDetailsModal";
 
 export default function Vendors() {
     const [vendData, setVendData] = useState(data);
     const [toggle, setToggle] = useState(false);
     const [delToggle, setDelToggle] = useState(false);
+    const [detailsToggle, setDetailsToggle] = useState(false);
     const [search, setSearch] = useState("");
     const [delVendor, setDelVendor] = useState("");
+    const [detailVendor, setDetailVendor] = useState({});
 
     const isInvoices = invData.find(inv => inv.vendorId === delVendor);
     const result = vendData.filter(vend => vend.name.toLowerCase().includes(search.toLowerCase()));
@@ -24,6 +27,10 @@ export default function Vendors() {
     function openCloseDeleteModal() {
         setDelToggle(prev => !prev);
     }  
+
+    function openCloseVendorDetails() {
+        setDetailsToggle(prev => !prev);
+    }
 
     function deleteVendor(id) {         
         const index = vendData.findIndex(vendor => vendor.id == id);
@@ -65,32 +72,30 @@ export default function Vendors() {
         deleteVendor(delVendor);
         openCloseDeleteModal()
     }
-  
-    useEffect(() => {
-        
-    },[]);
+      
+    // useEffect(() => {
+    //     invData.forEach((inv,ix) => sessionStorage.setItem(ix,JSON.stringify(inv)))
+    //     // vendData.forEach((vend,ix) => sessionStorage.setItem(ix,JSON.stringify(vend)))
+    // },[]);
 
     const vendors = result.map( vendor => (
-        <Link key={vendor.id}>
-            <div key={vendor.id} className={classes.strip}>
-                <div className={classes.stripVendorFields}>
-                    <div>
-                        <h2 >{vendor.name}</h2>
-                    </div>
-                    <div>
-                        <h2 className={classes.normalFont18}>{vendor.email}</h2>
-                    </div>
-                    <div>
-                        <h2>{vendor.address.city}, {vendor.address.state}</h2>
-                    </div>
+        <div onClick={(e) => {openCloseVendorDetails(); setDetailVendor(vendor);}} key={vendor.id} className={classes.strip}>
+            <div className={classes.stripVendorFields}>
+                <div>
+                    <h2 >{vendor.name}</h2>
                 </div>
-                <div className={classes.addDelDiv}>
-                    <input onClick={() => {openCloseDeleteModal(); setDelVendor(vendor.id)}} type="button" value="Delete" />
-                    <Link to={`/invoices/?vendor=${vendor.name}`}><input type="button" value="Invoices" /></Link>
+                <div>
+                    <h2 className={classes.normalFont18}>{vendor.email}</h2>
+                </div>
+                <div>
+                    <h2>{vendor.address.city}, {vendor.address.state}</h2>
                 </div>
             </div>
-            
-        </Link>
+            <div className={classes.addDelDiv}>
+                <input onClick={(e) => {openCloseDeleteModal(); setDelVendor(vendor.id);e.stopPropagation()}} type="button" value="Delete" />
+                <Link to={`/invoices/?vendor=${vendor.name}`}><input type="button" value="Invoices" /></Link>
+            </div>
+        </div>
     ));
         
     return(
@@ -102,6 +107,7 @@ export default function Vendors() {
             </div>          
             {toggle && <AddVendorModal openClose={openCloseVendorModal} add={addVendor}/>}          
             {delToggle && <DeleteVendorModal openClose={openCloseDeleteModal} click={delProcess} isInvoices={isInvoices}/>}
+            {detailsToggle && <VendorDetailsModal openClose={openCloseVendorDetails} detail={detailVendor}/>}
         </div>
     )
 }
