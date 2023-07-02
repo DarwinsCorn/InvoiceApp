@@ -29,6 +29,7 @@
     width: 80vw;
     max-width: 1000px;
     transition: scale 0.5s;
+    cursor: pointer;
 }
 
 .strip:hover {
