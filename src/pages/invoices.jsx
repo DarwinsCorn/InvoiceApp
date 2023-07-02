@@ -1,15 +1,25 @@
 import React, {useState, useEffect} from "react";
 import { Link, useSearchParams} from "react-router-dom";
 import classes from '../css/invoices.module.css';
-import {data as invData} from '../data/invoiceData';
+import {data as dataInv} from '../data/invoiceData';
 import {data as vendData} from '../data/vendorData';
 import Search from "../components/search";
 
 export default function Invoices() {
 
+    const [invData, setInvData] = useState(dataInv)
     const [search, setSearch] = useState("");
-    const [result, setResult] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
+    
+    let result;
+
+    if (searchParams.get("vendor")) {
+        result = invData.filter(inv =>
+            searchParams.get("vendor").toLowerCase() == findVend(inv.vendorId).name.toLowerCase());
+    } else {
+        result = invData.filter(inv => inv.id == search ||               
+            findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase()));
+    }
 
     const date = new Intl.DateTimeFormat('en-us',{ dateStyle: "long"});
     const currency = new Intl.NumberFormat('en-us',{ style:'currency',currency:'USD'})
@@ -34,12 +44,6 @@ export default function Invoices() {
         setSearch(evt.target.value);
     }
 
-    useEffect(() => {
-        if(search !== "") {
-            setSearchParams({})
-            setResult(invData.filter(inv => inv.id == search ||               
-                findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase())
-            ));
     function invoiceDeletion(id) {
         const index = invData.findIndex(inv => inv.id === id);
         if (index !== -1) {
@@ -49,17 +53,9 @@ export default function Invoices() {
                 return dbInv;
             })
         }
-        else if(searchParams.get("vendor")) {
-            setResult(invData.filter(inv =>
-            searchParams.get("vendor").toLowerCase() == findVend(inv.vendorId).name.toLowerCase()))
-        }
-        else setResult(invData)
-    },[search, searchParams]);
-    
     }
     
     const invoices = result.map(inv => (
-        <Link key={inv.id} to={`${inv.id}`}>
         <Link key={inv.id} to={`${inv.id}`} >
             <div className={classes.strip}>
                 <div className={classes.stripInvoiceFields}>
