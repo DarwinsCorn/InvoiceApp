@@ -72,11 +72,6 @@ export default function Vendors() {
         deleteVendor(delVendor);
         openCloseDeleteModal()
     }
-      
-    // useEffect(() => {
-    //     invData.forEach((inv,ix) => sessionStorage.setItem(ix,JSON.stringify(inv)))
-    //     // vendData.forEach((vend,ix) => sessionStorage.setItem(ix,JSON.stringify(vend)))
-    // },[]);
 
     const vendors = result.map( vendor => (
         <div onClick={(e) => {openCloseVendorDetails(); setDetailVendor(vendor);}} key={vendor.id} className={classes.strip}>
