@@ -55,7 +55,15 @@ export default function Invoices({data, setData}) {
         setLocalStorageDB(db);
         setData(db)
     }
-    
+
+    function invoiceAddition(form) {
+        console.log("adding an invoice", form.date.value)
+    }
+
+    function openCloseAddInvoiceModal() {
+        setAddInvoiceToggle(prev => !prev);
+    }
+  
     const invoices = result.map(inv => (
         <Link key={inv.id} to={`${inv.id}`} >
             <div className={classes.strip}>
@@ -93,10 +101,12 @@ export default function Invoices({data, setData}) {
                     <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems}`}>{currency.format(allTotalInv())}</p>
                 </div>
             </div>
-            <Search handler={searchHandle} placeholder={"Enter an invoice number, or vendor name..."}/>            
+            <input id="addInvoice" name="add" onClick={openCloseAddInvoiceModal} type="button" value="+" />
+            <Search handler={searchHandle} placeholder={"Search an invoice number, or vendor name..."}/>            
             <div className={classes.cardInvoices}>
                 {invoices}
             </div>
+            {addInvoiceToggle && <AddInvoiceModal openClose={openCloseAddInvoiceModal} add={invoiceAddition}/>}
         </div>
     )
 }
