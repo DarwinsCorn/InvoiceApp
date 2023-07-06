@@ -1,23 +1,25 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { Link, useSearchParams} from "react-router-dom";
-import classes from '../css/invoices.module.css';
-import {data as dataInv} from '../data/invoiceData';
-import {data as vendData} from '../data/vendorData';
 import Search from "../components/search";
+import { getLocalStorageDB, setLocalStorageDB } from "../utils/db";
+import AddInvoiceModal from "../components/addInvoiceModal";
+import classes from '../css/invoices.module.css';
 
-export default function Invoices() {
-
-    const [invData, setInvData] = useState(dataInv)
+export default function Invoices({data, setData}) {
+    
     const [search, setSearch] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
+    const [addInvoiceToggle, setAddInvoiceToggle] = useState(false);
+
+    const dataInv = data.filter(data => data.type === "invoice");
+    const dataVend = data.filter(data => data.type === "vendor");
     
     let result;
-
     if (searchParams.get("vendor")) {
-        result = invData.filter(inv =>
+        result = dataInv.filter(inv =>
             searchParams.get("vendor").toLowerCase() == findVend(inv.vendorId).name.toLowerCase());
     } else {
-        result = invData.filter(inv => inv.id == search ||               
+        result = dataInv.filter(inv => inv.id == search ||               
             findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase()));
     }
 
@@ -25,7 +27,7 @@ export default function Invoices() {
     const currency = new Intl.NumberFormat('en-us',{ style:'currency',currency:'USD'})
 
     function findVend(id) {
-        return vendData.filter( vend => vend.id === id)[0];
+        return dataVend.filter( vend => vend.id === id)[0];
     }
 
     function totalNumVend() {
@@ -45,14 +47,13 @@ export default function Invoices() {
     }
 
     function invoiceDeletion(id) {
-        const index = invData.findIndex(inv => inv.id === id);
-        if (index !== -1) {
-            setInvData(prev => {
-                const dbInv = prev.slice(0);
-                dbInv.splice(index,1);
-                return dbInv;
-            })
-        }
+        let db = getLocalStorageDB().slice(0);
+        
+        const index = db.findIndex(inv => inv.id === id);
+        if (index !== -1) db.splice(index,1);
+
+        setLocalStorageDB(db);
+        setData(db)
     }
     
     const invoices = result.map(inv => (

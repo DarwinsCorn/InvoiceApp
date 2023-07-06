@@ -1,21 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Link} from 'react-router-dom';
-import {data} from '../data/vendorData';
-import {data as invData} from '../data/invoiceData';
 import classes from '../css/vendors.module.css';
 import Search from "../components/search";
 import AddVendorModal from "../components/addVendorModal";
 import DeleteVendorModal from "../components/deleteVendorModal";
 import VendorDetailsModal from "../components/vendorDetailsModal";
+import { getLocalStorageDB, setLocalStorageDB } from "../utils/db";
 
-export default function Vendors() {
-    const [vendData, setVendData] = useState(data);
+export default function Vendors({data, setData}) {
     const [toggle, setToggle] = useState(false);
     const [delToggle, setDelToggle] = useState(false);
     const [detailsToggle, setDetailsToggle] = useState(false);
     const [search, setSearch] = useState("");
     const [delVendor, setDelVendor] = useState("");
     const [detailVendor, setDetailVendor] = useState({});
+
+    const vendData = data.filter(data => data.type === "vendor");
+    const invData = data.filter(data => data.type === "invoice");
 
     const isInvoices = invData.find(inv => inv.vendorId === delVendor);
     const result = vendData.filter(vend => vend.name.toLowerCase().includes(search.toLowerCase()));
