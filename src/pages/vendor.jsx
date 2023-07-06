@@ -33,36 +33,38 @@ export default function Vendors({data, setData}) {
         setDetailsToggle(prev => !prev);
     }
 
-    function deleteVendor(id) {         
-        const index = vendData.findIndex(vendor => vendor.id == id);
-        if (index !== -1) {
-            setVendData(prev => {
-                let newDb = prev.slice(0);
-                newDb.splice(index,1);
-                return newDb;
-            } );           
-        } 
+    function deleteVendor(id) {    
+        let db = getLocalStorageDB().slice(0);
+
+        const index = db.findIndex(vendor => vendor.id == id);
+        if (index !== -1) db.splice(index,1);
+
+        setLocalStorageDB(db);
+        setData(db);
+
         setDelVendor("");
     }
 
-    function addVendor(form) {                                                                
-        setVendData(prev => {
-                let newDb = prev.slice(0);
-                newDb.push({
-                    id: prev.length + 1,
-                    name: form.name.value,
-                    address: {
-                        street: form.street.value,
-                        city: form.city.value,
-                        state: form.state.value,
-                        zip: form.zip.value
-                    },
-                    email: form.email.value,
-                    phone: form.phone.value,
-                })
-                return newDb
+    function addVendor(form) {               
+        let db = getLocalStorageDB().slice(0);
+
+        db.push(
+            {
+                id: vendData.length + 1,
+                type: "vendor",
+                name: form.name.value,
+                address: {
+                    street: form.street.value,
+                    city: form.city.value,
+                    state: form.state.value,
+                    zip: form.zip.value
+                },
+                email: form.email.value,
+                phone: form.phone.value,
             }
         )
+        setLocalStorageDB(db);
+        setData(db);
     }
 
     function searchHandle(evt) {
@@ -96,8 +98,8 @@ export default function Vendors({data, setData}) {
         
     return(
         <div className={`${classes.center}`}>
-            <input id="add"  onClick={openCloseVendorModal} type="button" value="+" />   
-            <Search handler={searchHandle} placeholder={"Enter a vendor name..."}/>     
+            <input id="addVendor" name="add"  onClick={openCloseVendorModal} type="button" value="+" />   
+            <Search handler={searchHandle} placeholder={"Search a vendor name..."}/>     
             <div className={classes.cardVendors}>
                 {vendors}
             </div>          
