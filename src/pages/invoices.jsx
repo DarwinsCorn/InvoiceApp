@@ -57,7 +57,7 @@ export default function Invoices({data, setData}) {
     }
 
     function invoiceAddition(form) {
-        console.log("adding an invoice", form.date.value)
+        console.log("adding an invoice", form.item)
     }
 
     function openCloseAddInvoiceModal() {
@@ -106,7 +106,7 @@ export default function Invoices({data, setData}) {
             <div className={classes.cardInvoices}>
                 {invoices}
             </div>
-            {addInvoiceToggle && <AddInvoiceModal openClose={openCloseAddInvoiceModal} add={invoiceAddition}/>}
+            {addInvoiceToggle && <AddInvoiceModal openClose={openCloseAddInvoiceModal} add={invoiceAddition} data={data}/>}
         </div>
     )
 }
