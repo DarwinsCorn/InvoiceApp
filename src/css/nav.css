@@ -19,3 +19,11 @@ nav {
     margin-left: 20px;
     color: white;
 }
+
+.cursor {
+    cursor: pointer;
+}
+
+.cursor:hover {
+    color: orange;
+}

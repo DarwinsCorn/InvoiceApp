@@ -54,7 +54,7 @@ input[type=button] {
    margin: 20px;
 }
 
-input[type=button][id=add] {
+input[type=button][name=add] {
     font-size: 35px;
     border-radius: 40px;
     height: 50px;
