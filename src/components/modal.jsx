@@ -12,6 +12,7 @@ export default function Modal({set,children}) {
                 <div className={classes.content}>
                     {children}
                 </div>
+                <div className={classes.alignButton}></div>
             </div>
         </div>
     )
