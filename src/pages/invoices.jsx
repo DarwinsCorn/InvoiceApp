@@ -36,8 +36,12 @@ export default function Invoices({data, setData}) {
         return unique.size
     }
 
+    function invTotal(inv) {
+        return inv.items.map(item => item.priceUnit * item.qty * 1.13).reduce((acc,cur) => acc + cur);
+    }
+
     function allTotalInv() {
-        const amts = result.map(inv => inv.amt);
+        const amts = result.map(inv => invTotal(inv));
         return amts.length ? amts.reduce((acc,cur) => acc + cur) : 0;
     }
 
@@ -88,7 +92,6 @@ export default function Invoices({data, setData}) {
             type: "invoice",
             date: form.date.value,
             vendorId: Number(form.vendor.value),
-            amt: Number(form.amount.value),
             items: items,
         });
         
@@ -113,7 +116,7 @@ export default function Invoices({data, setData}) {
                         <h2 className={classes.normalFont18}>{findVend(inv.vendorId).email}</h2>
                     </div>
                     <div className={classes.rightAlign}>
-                        <h2>{currency.format(inv.amt)}</h2>
+                        <h2>{currency.format(invTotal(inv))}</h2>
                     </div>
                 </div>
                 <div className={`${classes.center} ${classes.align}`}>

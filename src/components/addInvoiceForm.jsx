@@ -22,14 +22,14 @@ export default function AddInvoiceForm({add, set, data}) {
         <div className={classes.container}>
             <form onSubmit={formHandler}>
                 <div className={classes.center}>
-                    <input 
+                    {/* <input 
                         required 
                         className={classes.inputForm} 
-                        placeholder="Amount" 
+                        placeholder="Amount (calculated value)" 
                         type="number" 
                         name="amount" 
                         id="amount"  
-                    />
+                    /> */}
                     <input 
                         required 
                         className={classes.inputForm} 

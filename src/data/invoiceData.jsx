@@ -2,7 +2,6 @@ export const data = [
     {
         id:1001,
         type: "invoice",
-        amt: 1390.00,
         date: "06/16/2023",
         vendorId: 2,
         items: [
@@ -26,7 +25,6 @@ export const data = [
     {
         id:1002,
         type: "invoice",
-        amt: 7285.00,
         date: "07/01/2023",
         vendorId: 1,
         items: [    
@@ -50,7 +48,6 @@ export const data = [
     {
         id:1003,
         type: "invoice",
-        amt: 2995.00,
         date: "06/30/2023",
         vendorId: 3,
         items: [
@@ -74,7 +71,6 @@ export const data = [
     {
         id:1004,
         type: "invoice",
-        amt: 43000.00,
         date: "08/15/2023",
         vendorId: 4,
         items: [
