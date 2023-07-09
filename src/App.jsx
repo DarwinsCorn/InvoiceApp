@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Layout from './components/layout';
 import Entry from './pages/entry';
@@ -31,6 +31,10 @@ function dataLoader() {
 export default function App() {
 
     const [data, setData] = useState(getLocalStorageDB());
+
+    useEffect(()=>{
+        setLocalStorageDB(data);
+    },[data]);
     
     return(
         <> 

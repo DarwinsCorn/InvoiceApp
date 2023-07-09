@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Link, useSearchParams} from "react-router-dom";
 import Search from "../components/search";
-import { getLocalStorageDB, setLocalStorageDB } from "../utils/db";
 import AddInvoiceModal from "../components/addInvoiceModal";
 import classes from '../css/invoices.module.css';
 
@@ -51,12 +50,11 @@ export default function Invoices({data, setData}) {
     }
 
     function invoiceDeletion(id) {
-        let db = getLocalStorageDB().slice(0);
+        let db = data.slice(0);
         
         const index = db.findIndex(inv => inv.id === id);
         if (index !== -1) db.splice(index,1);
 
-        setLocalStorageDB(db);
         setData(db)
     }
 
@@ -86,7 +84,7 @@ export default function Invoices({data, setData}) {
             }
         )
 
-        const db = getLocalStorageDB().slice(0);
+        const db = data.slice(0);
         db.push({
             id: dataInv.length + 1001,
             type: "invoice",
@@ -95,7 +93,6 @@ export default function Invoices({data, setData}) {
             items: items,
         });
         
-        setLocalStorageDB(db);
         setData(db);
     }
 

@@ -5,7 +5,6 @@ import Search from "../components/search";
 import AddVendorModal from "../components/addVendorModal";
 import DeleteVendorModal from "../components/deleteVendorModal";
 import VendorDetailsModal from "../components/vendorDetailsModal";
-import { getLocalStorageDB, setLocalStorageDB } from "../utils/db";
 
 export default function Vendors({data, setData}) {
     const [toggle, setToggle] = useState(false);
@@ -34,19 +33,20 @@ export default function Vendors({data, setData}) {
     }
 
     function deleteVendor(id) {    
-        let db = getLocalStorageDB().slice(0);
+   
+        let db = data.slice(0);
 
         const index = db.findIndex(vendor => vendor.id == id);
         if (index !== -1) db.splice(index,1);
 
-        setLocalStorageDB(db);
         setData(db);
 
         setDelVendor("");
     }
 
-    function addVendor(form) {               
-        let db = getLocalStorageDB().slice(0);
+    function addVendor(form) {      
+
+        let db = data.slice(0);
 
         db.push(
             {
@@ -63,7 +63,7 @@ export default function Vendors({data, setData}) {
                 phone: form.phone.value,
             }
         )
-        setLocalStorageDB(db);
+        
         setData(db);
     }
 
