@@ -91,7 +91,7 @@ export default function Vendors({data, setData}) {
             </div>
             <div className={classes.addDelDiv}>
                 <input onClick={(e) => {openCloseDeleteModal(); setDelVendor(vendor.id);e.stopPropagation()}} type="button" value="Delete" />
-                <Link to={`/invoices/?vendor=${vendor.name}`}><input type="button" value="Invoices" /></Link>
+                <Link to={`/invoices/?vendorId=${vendor.id}`}><input type="button" value="Invoices" /></Link>
             </div>
         </div>
     ));

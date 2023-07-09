@@ -15,9 +15,9 @@ export default function Invoices({data, setData}) {
     const dataVend = data.filter(data => data.type === "vendor");
     
     let result;
-    if (searchParams.get("vendor")) {
+    if (searchParams.get("vendorId")) {
         result = dataInv.filter(inv =>
-            searchParams.get("vendor").toLowerCase() == findVend(inv.vendorId).name.toLowerCase());
+            searchParams.get("vendorId") == inv.vendorId);
     } else {
         result = dataInv.filter(inv => inv.id == search ||               
             findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase()));
