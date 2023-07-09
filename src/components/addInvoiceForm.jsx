@@ -22,14 +22,27 @@ export default function AddInvoiceForm({add, set, data}) {
         <div className={classes.container}>
             <form onSubmit={formHandler}>
                 <div className={classes.center}>
-                    <input required className={classes.inputForm} placeholder="Amount" type="number" name="amount" id="amount"  />
-                    <input required className={classes.inputForm} placeholder="Date" type="date" name="date" id="date" />
-                    
+                    <input 
+                        required 
+                        className={classes.inputForm} 
+                        placeholder="Amount" 
+                        type="number" 
+                        name="amount" 
+                        id="amount"  
+                    />
+                    <input 
+                        required 
+                        className={classes.inputForm} 
+                        placeholder="Date" 
+                        type="date" 
+                        name="date" 
+                        id="date" 
+                    />                    
                     <select required className={classes.inputForm} name="vendor" id="vendor">
-                        <option disabled selected value="">Vendor</option>
+                        <option disabled selected value={""} >Vendor</option>
                         {options}
                     </select>
-                    <input required className={classes.inputForm} placeholder="Item" type="text" name="item" id="item" />
+                    <AddItemForm />
                     <button className={classes.submitBtn}>ADD INVOICE</button>
                 </div>
             </form>
