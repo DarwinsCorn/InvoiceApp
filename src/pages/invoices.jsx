@@ -57,7 +57,43 @@ export default function Invoices({data, setData}) {
     }
 
     function invoiceAddition(form) {
-        console.log("adding an invoice", form.item)
+        const quantities = [];
+        const units = [];
+        const descriptions = [];
+       
+
+        if(form.qty.length) {
+            for(let i=0; i < form.qty.length; i++)  {
+                quantities.push(form.qty[i].value);
+                units.push(form.priceUnit[i].value);
+                descriptions.push(form.descrp[i].value);
+            }
+        } else{
+            quantities.push(form.qty.value);
+            units.push(form.priceUnit.value);
+            descriptions.push(form.descrp.value);
+        }
+
+        const items = quantities.map((qty,ix) => {return {
+                    qty: Number(qty),
+                    priceUnit: Number(units[ix]),
+                    descrp: descriptions[ix],
+                }
+            }
+        )
+
+        const db = getLocalStorageDB().slice(0);
+        db.push({
+            id: dataInv.length + 1001,
+            type: "invoice",
+            date: form.date.value,
+            vendorId: Number(form.vendor.value),
+            amt: Number(form.amount.value),
+            items: items,
+        });
+        
+        setLocalStorageDB(db);
+        setData(db);
     }
 
     function openCloseAddInvoiceModal() {
