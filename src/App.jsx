@@ -56,7 +56,7 @@ export default function App() {
                           },
                           {
                             path: 'invoices/:id',
-                            element: <InvoiceDetail />,
+                            element: <InvoiceDetail data={data}/>,
                           }
                         ]
                       }

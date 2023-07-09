@@ -1,12 +1,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import classes from '../css/invdetail.module.css';
-import {data as vendData} from '../data/vendorData';
-import {data as invData} from '../data/invoiceData';
 
-export default function InvoiceDetail() {
+export default function InvoiceDetail({data}) {
     const {id} = useParams();
     const currency = new Intl.NumberFormat('en-us', {style:'currency',currency:'USD'});
+
+    const vendData = data.filter(data => data.type === "vendor");
+    const invData = data.filter(data => data.type === "invoice");
     
     function findDetails(id, dataArr) {        
         return dataArr.filter(member => member.id == id)[0];
