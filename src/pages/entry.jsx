@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getLocalStorageDB } from "../utils/db";
 import '../css/entry.css';
 
 export default function Entry() {
