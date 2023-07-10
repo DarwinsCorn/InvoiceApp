@@ -103,7 +103,7 @@ export default function Vendors({data, setData}) {
             <div className={classes.cardVendors}>
                 {vendors}
             </div>          
-            {toggle && <AddVendorModal openClose={openCloseVendorModal} add={addVendor}/>}          
+            {toggle && <AddVendorModal openClose={openCloseVendorModal} add={addVendor} data={data}/>}          
             {delToggle && <DeleteVendorModal openClose={openCloseDeleteModal} click={delProcess} isInvoices={isInvoices}/>}
             {detailsToggle && <VendorDetailsModal openClose={openCloseVendorDetails} detail={detailVendor}/>}
         </div>

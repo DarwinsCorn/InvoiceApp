@@ -1,12 +1,23 @@
 import React from "react";
 import classes from '../css/addVendorForm.module.css';
 
-export default function AddVendorForm({set,add}) {
+export default function AddVendorForm({set,add, data}) {
+
+    const vendData = data.filter(data => data.type === "vendor");
+
+    function vendorValidator(email) {
+        return vendData.find(vend => vend.email === email);
+    }
 
     function formHandler(evt) {
         evt.preventDefault();
         const form = evt.target;
         
+        if(vendorValidator(form.email.value)) {
+            alert( "This vendor already exists. Please enter valid information.")
+            return
+        };
+
         add(form);
         set();
     }

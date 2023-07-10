@@ -11,62 +11,56 @@ import { setLocalStorageDB, getLocalStorageDB } from './utils/db';
 import './css/index.css'
 import './css/App.css';
 
-function dataLoader() {
-    let refreshed = false;
-  
-    if(!sessionStorage.getItem('session')){
-      const sessionId = Math.random().toString();  
-      sessionStorage.setItem('session',sessionId);
-    }
-    else refreshed = true;
-  
-    if(!refreshed) {
-        setLocalStorageDB(dataInv)
-        setLocalStorageDB(dataVend, false)
-    }
-    
-    return null;
-}
 
 export default function App() {
 
-    const [data, setData] = useState(getLocalStorageDB());
+  let refreshed = false;
+  
+  if(!sessionStorage.getItem('session')){
+    const sessionId = Math.random().toString();  
+    sessionStorage.setItem('session',sessionId);
+  }
+  else refreshed = true;
 
-    useEffect(()=>{
-        setLocalStorageDB(data);
-    },[data]);
-    
-    return(
-        <> 
-            <RouterProvider router={
-                createBrowserRouter(
-                    [
-                      {
-                        path: '/',
-                        element: <Layout />,
-                        loader: dataLoader,
-                        children: [
-                          {
-                            index: true,
-                            element: <Entry />,
-                          },
-                          {
-                            path: 'vendors',
-                            element: <Vendors data={data} setData={setData}/>,
-                          },
-                          {
-                            path: 'invoices',
-                            element: <Invoices data={data} setData={setData}/>,
-                          },
-                          {
-                            path: 'invoices/:id',
-                            element: <InvoiceDetail data={data}/>,
-                          }
-                        ]
-                      }
-                    ]
-                  )
-            } />            
-        </>
-    )
+  if(!refreshed) {
+      setLocalStorageDB(dataInv)
+      setLocalStorageDB(dataVend, false)
+  }
+
+  const [data, setData] = useState(getLocalStorageDB());
+
+  useEffect(()=>{
+      setLocalStorageDB(data);
+  },[data]);
+  
+  return(
+    <RouterProvider router={
+      createBrowserRouter(
+        [
+          {
+            path: '/',
+            element: <Layout />,
+            children: [
+              {
+                index: true,
+                element: <Entry />,
+              },
+              {
+                path: 'vendors',
+                element: <Vendors data={data} setData={setData}/>,
+              },
+              {
+                path: 'invoices',
+                element: <Invoices data={data} setData={setData}/>,
+              },
+              {
+                path: 'invoices/:id',
+                element: <InvoiceDetail data={data}/>,
+              }
+            ]
+          }
+        ]
+        )
+    } />            
+  )
 }
