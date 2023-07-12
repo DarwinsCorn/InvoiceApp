@@ -104,7 +104,7 @@ export default function Invoices({data, setData}) {
         <Link key={inv.id} to={`${inv.id}`} >
             <div className={classes.strip}>
                 <div className={classes.stripInvoiceFields}>
-                    <div>
+                    <div className={classes.whenMedia}>
                         <h2 className={classes.invcolor}>Invoice #{inv.id}</h2>
                         <h2 className={classes.normalFont18}>{date.format(new Date(inv.date))}</h2>
                     </div>
@@ -134,7 +134,7 @@ export default function Invoices({data, setData}) {
                 <div className={classes.cardMenu}>
                     <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuHeaders}`}>Invoices</p>
                     <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems}`}>{result.length}</p>
-                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems}`}>{currency.format(allTotalInv())}</p>
+                    <p className={`${classes.largeFont30} ${classes.bold} ${classes.cardMenuItems} ${classes.alignmentFromLeft}`}>{currency.format(allTotalInv())}</p>
                 </div>
             </div>
             <input id="addInvoice" name="add" onClick={openCloseAddInvoiceModal} type="button" value="+" />

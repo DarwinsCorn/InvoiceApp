@@ -37,12 +37,12 @@ export default function InvoiceDetail({data}) {
         <div className={classes.center}>
             <div className={classes.invoice}>                
                 <section className={classes.banner}>
-                    <div>
+                    <div className={classes.mediaSize}>
                         <p className={`${classes.font22}`}>{vendDetails.name}</p>
                         <p className={`${classes.xlargeFont70} ${classes.boldFont} ${classes.invWord}`}>INVOICE</p>
 
                     </div>
-                    <div>
+                    <div className={classes.mediaSize}>
                         <p className={classes.thinFont18}>{vendDetails.phone}</p>
                         <p className={classes.thinFont18}>{vendDetails.email}</p>
                     </div>

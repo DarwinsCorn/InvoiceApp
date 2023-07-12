@@ -80,13 +80,13 @@ export default function Vendors({data, setData}) {
         <div onClick={(e) => {openCloseVendorDetails(); setDetailVendor(vendor);}} key={vendor.id} className={classes.strip}>
             <div className={classes.stripVendorFields}>
                 <div>
-                    <h2 >{vendor.name}</h2>
+                    <h2 className={classes.smallScreenFont30} >{vendor.name}</h2>
                 </div>
                 <div>
                     <h2 className={classes.normalFont18}>{vendor.email}</h2>
                 </div>
                 <div>
-                    <h2>{vendor.address.city}, {vendor.address.state}</h2>
+                    <h2 className={classes.smallScreenFont15}>{vendor.address.city}, {vendor.address.state}</h2>
                 </div>
             </div>
             <div className={classes.addDelDiv}>

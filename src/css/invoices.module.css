@@ -1,6 +1,5 @@
 
 .blockMenu {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +17,8 @@
 
 .cardMenu {
     border: 1px solid lightgray;
+
+    padding: 10px;
     background-color: hsl(39, 80%, 60%);
     color: whitesmoke;
     border-radius: 5px;
@@ -36,7 +37,6 @@
 }
 
 .cardMenuItems {
-    /* grid-column: span 2; */
     text-align: center;
 }
 
@@ -71,7 +71,6 @@
 .stripInvoiceFields {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* border: 2px solid red; */
 }
 
 .invcolor {
@@ -92,19 +91,55 @@
 }
 
 .rightAlign {
-    /* border: 2px solid red; */
     text-align: right;
 }
 
-/* .deleteBtn {
-    font-size: 15px;
-    border-radius: 5px;
-    padding: 5px 20px;
-    margin: 5px;
-    margin-left: 20px;
-} */
-
 .align {
     align-items:last baseline;
+}
+
+@media screen and (width < 740px) {
+    .cardMenu {
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+    }
+    .blockMenu p {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    .strip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }    
+    .stripInvoiceFields {
+        display: flex;
+        flex-direction: column;
+    }
+    .stripInvoiceFields h2 {
+        text-align: center;
+    }
+    .invcolor {
+        font-size: 30px;
+    }
+    .normalFont18 {
+        font-size: 12px;
+    }
+    .whenMedia {
+        width: 165px;
+    }
+
+    input[type=button] {
+        width: 100px;
+        margin-left: 5px;
+    }
+}
+
+@media screen and (orientation: landscape) and (width < 855px), (740px <= width < 855px) {
+    .whenMedia {
+        width: 160px;
+    }
 }
 

@@ -76,3 +76,29 @@ input[type=button] {
     flex-direction: column;
 }
 
+@media screen and (width < 550px) {
+    .strip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .stripVendorFields {
+        display: flex;
+        flex-direction: column;
+    }
+    .stripVendorFields h2 {
+        text-align: center;
+    }
+    .normalFont18 {
+        font-size: 12px;
+    }
+    .smallScreenFont30 {
+        font-size: 30px;
+    }
+    .smallScreenFont15 {
+        font-size: 15px;
+    }
+    input[type=button] {
+        width: 100px;
+    }
+}
