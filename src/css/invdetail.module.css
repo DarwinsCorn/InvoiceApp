@@ -16,7 +16,6 @@
 }
 
 .banner {
-    /* border: 2px solid red; */
     height: 175px;
     display: flex;
     justify-content: space-between;
@@ -40,13 +39,11 @@
 }
 
 .items {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
 }
 
 .strip {
-    /* border: 2px solid blue; */
     display: grid;
     grid-template-columns: 3fr repeat(3, 1fr);
     border-bottom: 2px solid lightskyblue;
@@ -58,17 +55,7 @@
     align-items: center;
 }
 
-.stripQty {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.stripUnit {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.stripTotal {
+.stripCenter {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -134,3 +121,77 @@
     opacity: 0;
 }
 
+.mediaCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    max-width: 400px;
+    min-width: 240px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px lightgray;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    padding-bottom: 20px;
+    background-color: white;
+    width: 80vw;
+}
+
+.mediaBanner {
+    background-color: hsl(203, 92%, 50%);
+    color: white;
+}
+
+.mediaFont {
+    font-size: 22px;
+}
+
+.mediaBold {
+    font-weight: bolder;
+}
+
+.border {
+    border: 2px solid red;
+}
+.mediaTextAlign {
+    align-self: flex-start;
+}
+.mediaAlignLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 90%;
+}
+.mediaSeparate {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.mediaInvHeight {
+    height: 100px;
+}
+
+
+@media screen and (width < 950px) {
+    .banner {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 375px;
+        gap: 0px;
+    }
+    .invWord {
+        top: -50px;
+    }
+    .xlargeFont70 {
+        font-size: 45px;
+    }
+    .mediaSize {
+        height: 100px;
+    }
+    .subBanner {
+        flex-direction: column;
+    }
+}

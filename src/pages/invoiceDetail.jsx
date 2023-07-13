@@ -1,10 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
 import classes from '../css/invdetail.module.css';
+import InvoiceDetailAlt from "./invoiceDetailAlt";
+import { currency } from "../utils/formats";
 
 export default function InvoiceDetail({data}) {
     const {id} = useParams();
-    const currency = new Intl.NumberFormat('en-us', {style:'currency',currency:'USD'});
+    const matchedMedia = useMediaQuery("(width < 950px)");
+   
 
     const vendData = data.filter(data => data.type === "vendor");
     const invData = data.filter(data => data.type === "invoice");
@@ -21,19 +25,20 @@ export default function InvoiceDetail({data}) {
     const items = invDetails.items.map((item,ix) => (
         <div key={ix} className={classes.strip}>
             <div className={classes.stripDesc}>{item.descrp}</div>
-            <div className={classes.stripQty}>                
+            <div className={classes.stripCenter}>                
                 {item.qty}
             </div>
-            <div className={classes.stripUnit}>                
+            <div className={classes.stripCenter}>                
                 {currency.format(item.priceUnit)}
             </div>
-            <div className={classes.stripTotal}>                
+            <div className={classes.stripCenter}>                
                 {currency.format(item.qty * item.priceUnit)}
             </div>
         </div>
     ));
+   
     
-    return(
+    return(matchedMedia ? <InvoiceDetailAlt invDetails={invDetails} vendDetails={vendDetails} subtotal={subtotal} total={total} taxed={taxed} /> :
         <div className={classes.center}>
             <div className={classes.invoice}>                
                 <section className={classes.banner}>
@@ -80,17 +85,17 @@ export default function InvoiceDetail({data}) {
                     <section className={`${classes.items} `}>
                         <div className={`${classes.strip} ${classes.itemHeadings}`}>
                             <div ><h3 className={classes.lightHeaders}>Description</h3></div>
-                            <div className={classes.stripQty}>
+                            <div className={classes.stripCenter}>
                                 <h3 className={classes.lightHeaders}>Qty</h3>
                             </div>
-                            <div className={classes.stripUnit}>
+                            <div className={classes.stripCenter}>
                                 <h3 className={classes.lightHeaders}>Price/Unit</h3>
                             </div>
-                            <div className={classes.stripTotal}>
+                            <div className={classes.stripCenter}>
                                 <h3 className={classes.lightHeaders}>Amount</h3>
                             </div>
                         </div>
-                        {items}
+                        {items}                        
                     </section>
                     <section className={`${classes.balances}`}>
                         <div >
@@ -107,7 +112,7 @@ export default function InvoiceDetail({data}) {
                         </div>
                     </section>
                 </section>
-            </div>
-        </div>
+            </div>            
+        </div>               
     )
 }
