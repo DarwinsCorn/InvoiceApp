@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Link, useSearchParams} from "react-router-dom";
 import Search from "../components/search";
 import AddInvoiceModal from "../components/addInvoiceModal";
+import { currency, date } from "../utils/formats";
 import classes from '../css/invoices.module.css';
 
 export default function Invoices({data, setData}) {
@@ -21,9 +22,6 @@ export default function Invoices({data, setData}) {
         result = dataInv.filter(inv => inv.id == search ||               
             findVend(inv.vendorId).name.toLowerCase().includes(search.toLowerCase()));
     }
-
-    const date = new Intl.DateTimeFormat('en-us',{ dateStyle: "long"});
-    const currency = new Intl.NumberFormat('en-us',{ style:'currency',currency:'USD'})
 
     function findVend(id) {
         return dataVend.filter( vend => vend.id === id)[0];
