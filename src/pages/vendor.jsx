@@ -13,7 +13,7 @@ export default function Vendors({data, setData}) {
     const [search, setSearch] = useState("");
     const [delVendor, setDelVendor] = useState("");
     const [detailVendor, setDetailVendor] = useState({});
-
+    
     const vendData = data.filter(data => data.type === "vendor");
     const invData = data.filter(data => data.type === "invoice");
 

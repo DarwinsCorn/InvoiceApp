@@ -1,13 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import classes from '../css/modal.module.css';
 
 export default function Modal({set,children}) {
     
+    const [winHeight, setWinHeight] = useState(window.innerHeight)
+    document.body.style.overflow = "hidden";
+    
+    window.addEventListener('resize', () => {
+        setWinHeight(window.innerHeight)
+    })
+
+    function closingProcess() {
+        document.body.style.overflow = "";
+        set();
+    }
+
+    const modalStyle = {
+        height: winHeight,
+    }
+    
     return(
-        <div className={classes.background}>
+        <div style={modalStyle} className={classes.background}>
             <div className={classes.modal}>
                 <div className={classes.alignButton}>
-                    <button className={classes.closeButton} onClick={set}>X</button>
+                    <button className={classes.closeButton} onClick={closingProcess}>X</button>
                 </div>
                 <div className={classes.content}>
                     {children}
