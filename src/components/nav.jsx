@@ -13,7 +13,7 @@ export default function Nav() {
     return(
         <nav>
             <Link to={"/"}>
-            <h1 className="logo">#LOGO</h1>
+            <h1 className="logo">MAIN</h1>
             </Link>
             <h2 onClick={reset} className="user cursor">RESET DEMO</h2>
         </nav>
